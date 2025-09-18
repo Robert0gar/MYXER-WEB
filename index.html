@@ -24,6 +24,85 @@
 </head>
 <body>
     <h1> Manual Proyecto MYXER </h1>
+    <P></P>
+    <h1>Explicacion clases</h1>
+    <h1>Estructuras de Datos y Algoritmos en el Código</h1>
+
+    <div class="section">
+        <h2>1. Pila (Stack) → Emergencias</h2>
+        <p><strong>Uso:</strong></p>
+        <ul>
+            <li>Almacena las emergencias con el método LIFO (Last In, First Out).</li>
+            <li>Cuando ocurre una emergencia, se agrega con <code>push()</code>.</li>
+            <li>Para atenderla, se usa <code>pop()</code>, sacando la más reciente.</li>
+            <li>Para consultar sin quitarla, se usa <code>peek()</code>.</li>
+        </ul>
+        <p class="algoritmo">Algoritmo:</p>
+        <p>La pila permite que la última emergencia registrada sea la primera en resolverse, lo cual tiene sentido en situaciones críticas.</p>
+    </div>
+
+    <div class="section">
+        <h2>2. Cola con Prioridad (Priority Queue) → Clientes</h2>
+        <p><strong>Uso:</strong></p>
+        <ul>
+            <li>Se utiliza para gestionar a los clientes en espera.</li>
+            <li>Los clientes se insertan con prioridad distinta:
+                <ul>
+                    <li>VIP y para llevar → prioridad más alta.</li>
+                    <li>Regulares en sala → prioridad menor.</li>
+                </ul>
+            </li>
+        </ul>
+        <p class="algoritmo">Algoritmo:</p>
+        <p>El cliente con mayor prioridad numérica es atendido primero, simulando una cola dinámica que respeta la importancia antes que el orden de llegada.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. Lista Enlazada (LinkedList) → Tareas</h2>
+        <p><strong>Uso:</strong></p>
+        <ul>
+            <li>Permite agregar tareas, eliminarlas por índice y buscarlas por texto.</li>
+            <li>Es flexible para manejar listas que cambian constantemente.</li>
+        </ul>
+        <p class="algoritmo">Algoritmo:</p>
+        <ul>
+            <li>Se recorre la lista para buscar coincidencias (<code>buscarIndicePorTexto</code>).</li>
+            <li>Se organiza agrupando las tareas por departamento (Cocina, Caja, Servicio) usando un <code>TreeMap</code> que ordena alfabéticamente.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. Tabla Hash (Hashtable) → Contadores y Menú</h2>
+        <p><strong>Uso en contadores:</strong></p>
+        <ul>
+            <li>Guarda cuántas tareas, emergencias y clientes se han creado.</li>
+            <li>Ejemplo: <code>contador.put("TAREAS_CREADAS", 0);</code></li>
+        </ul>
+        <p><strong>Uso en menús de comida:</strong></p>
+        <ul>
+            <li>Se usan varias tablas hash para consultar rápidamente un platillo por su nombre.</li>
+            <li>Evita recorrer listas grandes y mejora el acceso.</li>
+        </ul>
+        <p class="algoritmo">Algoritmo:</p>
+        <p>Se aprovecha la búsqueda O(1) de una tabla hash para acceder rápido a un platillo específico.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. Árbol Binario → Empleados</h2>
+        <p><strong>Uso:</strong></p>
+        <ul>
+            <li>Representa la jerarquía del restaurante.</li>
+            <li>El nodo raíz es el CEO (MYXER).</li>
+            <li>Las ramas representan Caja, Cocina y Servicio (meseros).</li>
+        </ul>
+        <p class="algoritmo">Algoritmo:</p>
+        <ul>
+            <li>Se usa búsqueda en árbol para encontrar empleados.</li>
+            <li>Se recorre el subárbol para listar empleados de un área.</li>
+        </ul>
+    </div>
+    <h1></h1>
+    <h1> Menú Principal </h1>
     <p>Primero se muestra el sistema de gestion y te las opciones que puedes hacer dentro de este código</p>
     <p>Si das enter podrás ver el menú principal donde podrás ver las emergencias, atender clientes, 
         gestionar las tareas, ver todo, los empleados y salir</p>
