@@ -1,107 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Restaurante MYXER</title>
     <style>
         body {
-            text-align: center; 
-            font-family: Arial, sans-serif; 
+            font-family: Arial, sans-serif;
+            background: url("https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: #333;
         }
 
-        img {
-            display: block; 
-            margin: 10px auto; 
-            max-width: 90%; 
-            height: auto; 
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px black;
         }
 
-        p {
-            margin: 10px 0;
+        /* Menús principales */
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        li {
+            background: rgba(85, 85, 85, 0.92);
+            margin: 15px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            transition: transform 0.2s ease;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+        }
+
+        li a {
+            display: block;
+            padding: 18px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Submenú */
+        .submenu {
+            display: none;
+            background: rgba(238, 238, 238, 0.95);
+            margin: 12px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Cubitos internos */
+        .apartado {
+            background: rgba(221, 221, 221, 0.95);
+            border: 2px solid #999;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .apartado:hover {
+            transform: scale(1.02);
+        }
+
+        .apartado h3 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.2em;
+            background: rgba(187, 187, 187, 0.95);
+            border-radius: 12px 12px 0 0;
+            cursor: pointer;
+        }
+
+        .apartado h3:hover {
+            background: rgba(170, 170, 170, 0.95);
+        }
+
+        .apartado-content {
+            display: none;
+            padding: 20px;
+            font-size: 1.05em;
+            background: #fff;
+            border-top: 1px solid #bbb;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .apartado-content p {
+            margin: 8px 0;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
-    <h1> Manual Proyecto MYXER </h1>
+
+    <h1>🍷 Restaurante MYXER</h1>
+
+    <ul>
+        <!-- Clases del Código -->
+        <li>
+            <a onclick="toggleSubmenu(this)">Clases del Código</a>
+            <div class="submenu">
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">1. Pila (Stack) → Emergencias</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Almacena las emergencias con el método <b>LIFO</b> (Last In, First Out).<br>
+                           • Cuando ocurre una emergencia, se agrega con <code>push()</code>.<br>
+                           • Para atenderla, se usa <code>pop()</code>, sacando la más reciente.<br>
+                           • Para consultar sin quitarla, se usa <code>peek()</code>.
+                        </p>
+                        <p><b>Algoritmo:</b> La pila permite que la última emergencia registrada sea la primera en resolverse, lo cual tiene sentido en situaciones críticas.</p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">2. Cola con Prioridad (Priority Queue) → Clientes</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Se utiliza para gestionar a los clientes en espera.<br>
+                           • Los clientes se insertan con prioridad distinta:<br>
+                           – VIP y para llevar → prioridad más alta.<br>
+                           – Regulares en sala → prioridad menor.
+                        </p>
+                        <p><b>Algoritmo:</b> El programa define un sistema de prioridad: el cliente con mayor prioridad numérica es atendido primero. Esto simula una cola dinámica que respeta importancia antes que orden de llegada.</p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">3. Lista Enlazada (LinkedList) → Tareas</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Permite agregar tareas, eliminarlas por índice y buscarlas por texto.<br>
+                           • Es flexible para manejar listas que cambian constantemente.
+                        </p>
+                        <p><b>Algoritmo:</b></p>
+                        <p>• Se recorre la lista para buscar coincidencias (<code>buscarIndicePorTexto</code>).<br>
+                           • También se organiza agrupando las tareas por departamento (Cocina, Caja, Servicio) usando un <b>TreeMap</b> que ordena alfabéticamente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">4. Tabla Hash (Hashtable) → Contadores y Menú</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso en contadores:</b></p>
+                        <p>• Guarda cuántas tareas, emergencias y clientes se han creado.<br>
+                           • Ejemplo: <code>contador.put("TAREAS_CREADAS", 0);</code>
+                        </p>
+                        <p><b>Uso en menús de comida:</b></p>
+                        <p>• Se usan varias tablas hash para consultar rápidamente un platillo por su nombre.<br>
+                           • Esto evita recorrer listas grandes y mejora el acceso.
+                        </p>
+                        <p><b>Algoritmo:</b> Se aprovecha la búsqueda <b>O(1)</b> de una tabla hash para acceder rápido a un platillo específico.</p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">5. Árbol Binario → Empleados</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Representa la jerarquía del restaurante.<br>
+                           • El nodo raíz es el CEO (MYXER).<br>
+                           • Tiene ramas para Caja, Cocina y Servicio (meseros).
+                        </p>
+                        <p><b>Algoritmo:</b></p>
+                        <p>• Se usa búsqueda en árbol para encontrar empleados.<br>
+                           • También se recorre el subárbol para listar empleados de un área.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+
+        <!-- Manual en Terminal -->
+        <li>
+            <a onclick="toggleSubmenu(this)">Manual en Terminal</a>
+            <div class="submenu">
+                <h1> Manual Proyecto MYXER </h1>
     <P></P>
-    <h1>Explicacion clases</h1>
-    <h1>Estructuras de Datos y Algoritmos en el Código</h1>
-
-    <div class="section">
-        <h2>1. Pila (Stack) → Emergencias</h2>
-        <p><strong>Uso:</strong></p>
-        <ul>
-            <li>Almacena las emergencias con el método LIFO (Last In, First Out).</li>
-            <li>Cuando ocurre una emergencia, se agrega con <code>push()</code>.</li>
-            <li>Para atenderla, se usa <code>pop()</code>, sacando la más reciente.</li>
-            <li>Para consultar sin quitarla, se usa <code>peek()</code>.</li>
-        </ul>
-        <p class="algoritmo">Algoritmo:</p>
-        <p>La pila permite que la última emergencia registrada sea la primera en resolverse, lo cual tiene sentido en situaciones críticas.</p>
-    </div>
-
-    <div class="section">
-        <h2>2. Cola con Prioridad (Priority Queue) → Clientes</h2>
-        <p><strong>Uso:</strong></p>
-        <ul>
-            <li>Se utiliza para gestionar a los clientes en espera.</li>
-            <li>Los clientes se insertan con prioridad distinta:
-                <ul>
-                    <li>VIP y para llevar → prioridad más alta.</li>
-                    <li>Regulares en sala → prioridad menor.</li>
-                </ul>
-            </li>
-        </ul>
-        <p class="algoritmo">Algoritmo:</p>
-        <p>El cliente con mayor prioridad numérica es atendido primero, simulando una cola dinámica que respeta la importancia antes que el orden de llegada.</p>
-    </div>
-
-    <div class="section">
-        <h2>3. Lista Enlazada (LinkedList) → Tareas</h2>
-        <p><strong>Uso:</strong></p>
-        <ul>
-            <li>Permite agregar tareas, eliminarlas por índice y buscarlas por texto.</li>
-            <li>Es flexible para manejar listas que cambian constantemente.</li>
-        </ul>
-        <p class="algoritmo">Algoritmo:</p>
-        <ul>
-            <li>Se recorre la lista para buscar coincidencias (<code>buscarIndicePorTexto</code>).</li>
-            <li>Se organiza agrupando las tareas por departamento (Cocina, Caja, Servicio) usando un <code>TreeMap</code> que ordena alfabéticamente.</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>4. Tabla Hash (Hashtable) → Contadores y Menú</h2>
-        <p><strong>Uso en contadores:</strong></p>
-        <ul>
-            <li>Guarda cuántas tareas, emergencias y clientes se han creado.</li>
-            <li>Ejemplo: <code>contador.put("TAREAS_CREADAS", 0);</code></li>
-        </ul>
-        <p><strong>Uso en menús de comida:</strong></p>
-        <ul>
-            <li>Se usan varias tablas hash para consultar rápidamente un platillo por su nombre.</li>
-            <li>Evita recorrer listas grandes y mejora el acceso.</li>
-        </ul>
-        <p class="algoritmo">Algoritmo:</p>
-        <p>Se aprovecha la búsqueda O(1) de una tabla hash para acceder rápido a un platillo específico.</p>
-    </div>
-
-    <div class="section">
-        <h2>5. Árbol Binario → Empleados</h2>
-        <p><strong>Uso:</strong></p>
-        <ul>
-            <li>Representa la jerarquía del restaurante.</li>
-            <li>El nodo raíz es el CEO (MYXER).</li>
-            <li>Las ramas representan Caja, Cocina y Servicio (meseros).</li>
-        </ul>
-        <p class="algoritmo">Algoritmo:</p>
-        <ul>
-            <li>Se usa búsqueda en árbol para encontrar empleados.</li>
-            <li>Se recorre el subárbol para listar empleados de un área.</li>
-        </ul>
-    </div>
-    <h1></h1>
     <h1> Menú Principal </h1>
     <p>Primero se muestra el sistema de gestion y te las opciones que puedes hacer dentro de este código</p>
     <p>Si das enter podrás ver el menú principal donde podrás ver las emergencias, atender clientes, 
@@ -172,5 +263,45 @@
     <h1>Salir</h1>
     <p>Si introduces la opcion 6 del menu principal podras salir del programa</p>
     <img src="imagenes/captura24.png" alt="Captura del manual>" width="600">
+            </div>
+        </li>
+
+        <!-- Manual en Interfaz -->
+        <li>
+            <a onclick="toggleSubmenu(this)">Manual en Interfaz</a>
+            <div class="submenu">
+                <p>💻 Aquí irá el contenido del manual en interfaz...</p>
+            </div>
+        </li>
+    </ul>
+
+    <script>
+        // Abrir/cerrar submenús principales
+        function toggleSubmenu(element) {
+            let allSubmenus = document.querySelectorAll('.submenu');
+            allSubmenus.forEach(sub => {
+                if (sub !== element.nextElementSibling) {
+                    sub.style.display = 'none';
+                }
+            });
+
+            let submenu = element.nextElementSibling;
+            submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Abrir/cerrar apartados internos
+        function toggleApartado(element) {
+            let content = element.nextElementSibling;
+            let allContents = document.querySelectorAll('.apartado-content');
+            allContents.forEach(c => {
+                if (c !== content) {
+                    c.style.display = 'none';
+                }
+            });
+
+            content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+
 </body>
 </html>
