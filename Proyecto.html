@@ -116,8 +116,284 @@
 
     <ul>
         <!-- Clases del Código -->
-        <li> <a onclick="toggleSubmenu(this)">Clases del Código</a> <div class="submenu"> <div class="apartado"> <h3 onclick="toggleApartado(this)">1. Pila (Stack) → Emergencias</h3> <div class="apartado-content"> <p><b>Uso:</b></p> <p>• Almacena las emergencias con el método <b>LIFO</b> (Last In, First Out).<br> • Cuando ocurre una emergencia, se agrega con <code>push()</code>.<br> • Para atenderla, se usa <code>pop()</code>, sacando la más reciente.<br> • Para consultar sin quitarla, se usa <code>peek()</code>. </p> <p><b>Algoritmo:</b> La pila permite que la última emergencia registrada sea la primera en resolverse, lo cual tiene sentido en situaciones críticas.</p> </div> </div> <div class="apartado"> <h3 onclick="toggleApartado(this)">2. Cola con Prioridad (Priority Queue) → Clientes</h3> <div class="apartado-content"> <p><b>Uso:</b></p> <p>• Se utiliza para gestionar a los clientes en espera.<br> • Los clientes se insertan con prioridad distinta:<br> – VIP y para llevar → prioridad más alta.<br> – Regulares en sala → prioridad menor. </p> <p><b>Algoritmo:</b> El programa define un sistema de prioridad: el cliente con mayor prioridad numérica es atendido primero. Esto simula una cola dinámica que respeta importancia antes que orden de llegada.</p> </div> </div> <div class="apartado"> <h3 onclick="toggleApartado(this)">3. Lista Enlazada (LinkedList) → Tareas</h3> <div class="apartado-content"> <p><b>Uso:</b></p> <p>• Permite agregar tareas, eliminarlas por índice y buscarlas por texto.<br> • Es flexible para manejar listas que cambian constantemente. </p> <p><b>Algoritmo:</b></p> <p>• Se recorre la lista para buscar coincidencias (<code>buscarIndicePorTexto</code>).<br> • También se organiza agrupando las tareas por departamento (Cocina, Caja, Servicio) usando un <b>TreeMap</b> que ordena alfabéticamente. </p> </div> </div> <div class="apartado"> <h3 onclick="toggleApartado(this)">4. Tabla Hash (Hashtable) → Contadores y Menú</h3> <div class="apartado-content"> <p><b>Uso en contadores:</b></p> <p>• Guarda cuántas tareas, emergencias y clientes se han creado.<br> • Ejemplo: <code>contador.put("TAREAS_CREADAS", 0);</code> </p> <p><b>Uso en menús de comida:</b></p> <p>• Se usan varias tablas hash para consultar rápidamente un platillo por su nombre.<br> • Esto evita recorrer listas grandes y mejora el acceso. </p> <p><b>Algoritmo:</b> Se aprovecha la búsqueda <b>O(1)</b> de una tabla hash para acceder rápido a un platillo específico.</p> </div> </div> <div class="apartado"> <h3 onclick="toggleApartado(this)">5. Árbol Binario → Empleados</h3> <div class="apartado-content"> <p><b>Uso:</b></p> <p>• Representa la jerarquía del restaurante.<br> • El nodo raíz es el CEO (MYXER).<br> • Tiene ramas para Caja, Cocina y Servicio (meseros). </p> <p><b>Algoritmo:</b></p> <p>• Se usa búsqueda en árbol para encontrar empleados.<br> • También se recorre el subárbol para listar empleados de un área. </p> </div> </div> </div> </li>
-
+<!-- Clases del Código -->
+<li> 
+    <a onclick="toggleSubmenu(this)">Clases del Código</a> 
+    <div class="submenu"> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">1. Stack (Pila) → Emergencias</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Almacena emergencias siguiendo el principio <b>LIFO</b> (Last In, First Out).<br> 
+                    • Métodos principales: <code>push()</code> para agregar, <code>pop()</code> para atender y <code>peek()</code> para consultar sin eliminar.<br> 
+                    • Utiliza nodos enlazados (<code>PriorityNode</code>) donde cada nodo apunta al siguiente.<br> 
+                    • Maneja errores con excepciones cuando la pila está vacía.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • La última emergencia registrada es la primera en ser atendida, lo cual es lógico en situaciones críticas.<br> 
+                    • El atributo <code>top</code> siempre apunta al elemento más reciente.<br> 
+                    • Incluye validación con <code>isEmpty()</code> antes de realizar operaciones.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">2. PriorityQueue (Cola con Prioridad) → Clientes</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Gestiona clientes en espera con sistema de prioridades numéricas.<br> 
+                    • Utiliza una lista interna (<code>ArrayList</code>) de nodos ordenados por prioridad.<br> 
+                    • Método <code>pushWithPriority()</code> inserta clientes manteniendo el orden automáticamente.<br> 
+                    • Prioridades del sistema:<br> 
+                    &nbsp;&nbsp;– VIP en sala: 300 (máxima)<br> 
+                    &nbsp;&nbsp;– VIP para llevar: 200<br> 
+                    &nbsp;&nbsp;– Regular para llevar: 100<br> 
+                    &nbsp;&nbsp;– Regular en sala: 50 (mínima)
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • Al insertar un cliente, busca la posición correcta comparando prioridades.<br> 
+                    • El cliente con mayor prioridad siempre está en la posición 0 del arreglo.<br> 
+                    • Permite acceso directo a la lista con <code>getElementos()</code> para operaciones especiales como ordenamiento alfabético.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">3. Linkedlist (Lista Enlazada) → Tareas</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Implementa una lista enlazada simple para almacenar tareas de forma secuencial.<br> 
+                    • Operaciones: <code>insert()</code> agrega al final, <code>delete()</code> elimina por índice, <code>find()</code> busca por posición.<br> 
+                    • Mantiene un contador <code>size</code> para saber cuántos elementos hay.<br> 
+                    • Usa <code>PriorityNode</code> como estructura base para los nodos.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • Flexible para listas que cambian constantemente (agregar y eliminar frecuentemente).<br> 
+                    • Para insertar: recorre hasta el final y enlaza el nuevo nodo.<br> 
+                    • Para eliminar: ajusta los enlaces saltándose el nodo a borrar.<br> 
+                    • Valida índices antes de cualquier operación para evitar errores.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">4. Hashtable (Tabla Hash) → Contadores y Menú</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Implementación propia usando dos arreglos paralelos: uno para claves y otro para valores.<br> 
+                    • Capacidad fija inicial de 10 elementos.<br> 
+                    • Método <code>put()</code> actualiza si la clave existe, o agrega al final si es nueva.<br> 
+                    • Método <code>get()</code> busca linealmente la clave y devuelve su valor.
+                </p> 
+                <p><b>Función en contadores:</b></p> 
+                <p>
+                    • Almacena estadísticas: <code>"TAREAS_CREADAS"</code>, <code>"EMERGENCIAS_CREADAS"</code>, <code>"CLIENTES_AGREGADOS"</code>.<br> 
+                    • Permite acceso rápido por nombre de contador.
+                </p> 
+                <p><b>Función en menú:</b></p> 
+                <p>
+                    • Guarda platillos con nombre como clave y objeto <code>Platillo</code> como valor.<br> 
+                    • Facilita búsqueda rápida de platillos por nombre sin recorrer listas completas.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">5. ArbolEmpleados (Árbol Binario) → Jerarquía</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Representa la estructura organizacional del restaurante como árbol binario.<br> 
+                    • Nodo raíz: CEO (MYXER).<br> 
+                    • Ramas principales: Caja (izquierda), Cocina (derecha) y Servicio (hijo de Cocina).<br> 
+                    • Cada empleado es un nodo con atributos <code>izquierda</code> y <code>derecha</code>.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • <code>buscarEmpleado()</code> usa recursión para buscar por nombre en todo el árbol.<br> 
+                    • <code>mostrarEmpleados()</code> recorre recursivamente e imprime solo empleados (no departamentos).<br> 
+                    • Los meseros tienen mesas asignadas: Ana (1-15), Carlos (16-30).<br> 
+                    • Método <code>construirArbol()</code> inicializa toda la jerarquía al crear el objeto.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">6. Cliente → Modelo de Datos</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Modela los datos de un cliente con atributos: nombre, mesa, personas, esVip, tipoOrden.<br> 
+                    • Maneja la orden completa: listas de platillos y sus precios correspondientes.<br> 
+                    • Registra hora de orden con <code>LocalDateTime</code> automáticamente al crear el cliente.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • <code>agregarPlatillo()</code> añade items a la orden del cliente.<br> 
+                    • <code>calcularTotal()</code> suma todos los precios usando streams de Java.<br> 
+                    • <code>toString()</code> genera resumen formateado con tipo (VIP/Regular), modalidad, hora y total.<br> 
+                    • Diferencia entre órdenes en sala (con mesa asignada) y para llevar (sin mesa).
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">7. Empleado → Nodo del Árbol</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Diseñado específicamente para formar parte de un árbol binario.<br> 
+                    • Atributos: nombre, puesto, lista de mesas asignadas, referencias izquierda/derecha.<br> 
+                    • Los nodos "Departamento" actúan como contenedores organizacionales.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • <code>asignarMesas()</code> genera un rango de mesas para meseros específicos.<br> 
+                    • Los getters/setters permiten navegar y construir el árbol.<br> 
+                    • <code>toString()</code> muestra el nombre, puesto y mesas asignadas (si tiene).<br> 
+                    • Fundamental para la jerarquía: permite enlaces padre-hijo en la estructura.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">8. Tarea → Modelo de Trabajo</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Representa una tarea del restaurante con descripción, departamento y tiempo estimado.<br> 
+                    • Usada tanto para tareas generales (lista enlazada) como emergencias (pila).<br> 
+                    • Las emergencias se marcan con prefijo "[EMERGENCIA]" en la descripción.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • <code>calcularTiempoTotalRecursivo()</code> implementa divide y vencerás para sumar tiempos de un arreglo.<br> 
+                    • Divide el arreglo a la mitad recursivamente hasta llegar a elementos individuales.<br> 
+                    • <code>toString()</code> formatea la salida mostrando departamento y tiempo si aplica.<br> 
+                    • Maneja valores nulos con validaciones en el método recursivo.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">9. Platillo → Modelo de Menú</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Almacena información de items del menú: nombre, descripción, precio, tiempo de preparación.<br> 
+                    • Se guarda en la Hashtable <code>menuCompleto</code> con el nombre como clave.<br> 
+                    • Inmutable después de creación (solo tiene getters, no setters).
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • Proporciona información completa del platillo para mostrar al cliente.<br> 
+                    • El tiempo de preparación ayuda a estimar tiempos de espera.<br> 
+                    • <code>toString()</code> genera formato simple: "Nombre - $Precio" para displays rápidos.<br> 
+                    • Usado en ambas interfaces (consola y GUI) para tomar órdenes.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">10. PriorityNode → Nodo Multipropósito</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Estructura base para Stack, PriorityQueue y Linkedlist.<br> 
+                    • Contiene: dato genérico (<code>T</code>), referencia al siguiente nodo, y prioridad (entero).<br> 
+                    • Constructores flexibles: sin datos, con dato, o con dato y prioridad.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • En Stack: la prioridad no se usa, solo el enlace <code>next</code>.<br> 
+                    • En PriorityQueue: la prioridad determina el orden de atención.<br> 
+                    • En Linkedlist: la prioridad tampoco se usa, funciona como lista simple.<br> 
+                    • Permite crear estructuras de datos enlazadas reutilizando el mismo nodo.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">11. ShellSortSearch → Algoritmos de Ordenamiento y Búsqueda</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Implementa Shell Sort para ordenar clientes y tareas alfabéticamente.<br> 
+                    • Proporciona búsqueda binaria para clientes ordenados.<br> 
+                    • Incluye búsqueda lineal por departamento para tareas.<br> 
+                    • Método especial para asignar mesa cercana a la preferida del cliente.
+                </p> 
+                <p><b>Función de Shell Sort:</b></p> 
+                <p>
+                    • Usa gaps (distancias) que van reduciéndose: n/2, n/4, n/8... hasta 1.<br> 
+                    • Para cada gap, hace inserción por saltos comparando elementos distantes.<br> 
+                    • Ignora mayúsculas/minúsculas con <code>compareToIgnoreCase()</code>.<br> 
+                    • Más eficiente que burbuja para arreglos medianos.
+                </p> 
+                <p><b>Función de Búsquedas:</b></p> 
+                <p>
+                    • Búsqueda binaria: divide el arreglo a la mitad repetidamente (requiere orden previo).<br> 
+                    • Búsqueda por departamento: recorre linealmente todo el arreglo buscando coincidencias.<br> 
+                    • Mesa cercana: busca en círculos concéntricos desde la mesa preferida (primero abajo, luego arriba).
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">12. Main → Controlador del Sistema (Consola)</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Punto de entrada de la aplicación en modo consola.<br> 
+                    • Inicializa todas las estructuras de datos y datos de prueba (25 clientes, menú completo).<br> 
+                    • Controla el flujo del programa con menús y submenús.<br> 
+                    • Coordina operaciones entre emergencias, clientes, tareas y empleados.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • <code>inicializarMenuCompleto()</code> carga 14 platillos al sistema.<br> 
+                    • <code>inicializarClientesPredefinidos()</code> crea 25 clientes simulados con órdenes.<br> 
+                    • Métodos de menú: dirigen al usuario entre las diferentes funcionalidades.<br> 
+                    • Métodos de operación: agregar, atender, listar para cada estructura.<br> 
+                    • Sistema de validación: verifica entradas del usuario y maneja errores.<br> 
+                    • Control de mesas: arreglo booleano que marca ocupadas/libres, máximo 30 mesas.
+                </p> 
+            </div> 
+        </div> 
+        
+        <div class="apartado"> 
+            <h3 onclick="toggleApartado(this)">13. RestauranteGUI → Interfaz Gráfica</h3> 
+            <div class="apartado-content"> 
+                <p><b>Uso:</b></p> 
+                <p>
+                    • Versión con interfaz gráfica usando Swing de Java.<br> 
+                    • Misma lógica que Main pero con ventanas, botones y diálogos.<br> 
+                    • Usa JFrame como ventana principal, JTextArea para mostrar información.<br> 
+                    • Paleta de colores definida: emergencias (rojo), clientes (verde), tareas (amarillo), etc.
+                </p> 
+                <p><b>Función:</b></p> 
+                <p>
+                    • Inicialización idéntica a Main: mismos datos de prueba.<br> 
+                    • <code>configurarVentana()</code> establece tamaño y posición centrada.<br> 
+                    • <code>crearComponentes()</code> genera 6 botones de acción y área de texto.<br> 
+                    • <code>configurarLayout()</code> organiza con BorderLayout: título arriba, botones izquierda, info centro.<br> 
+                    • Diálogos interactivos: <code>JOptionPane</code> para inputs y confirmaciones.<br> 
+                    • <code>tomarOrden()</code> usa JSpinners para seleccionar cantidades de platillos.<br> 
+                    • Actualización dinámica: cada acción refresca el área de texto con información actualizada.
+                </p> 
+            </div> 
+        </div> 
+        
+    </div> 
+</li>
         <!-- Manual en Terminal -->
         <li>
             <a onclick="toggleSubmenu(this)">Manual en Terminal</a>
@@ -308,6 +584,8 @@
                 <p>Desde esta opción se visualiza la jerarquía del restaurante: CEO, Caja, Cocina y Meseros.</p>
                 <img src="ImagenesInterfaz/img4.png" width="600">
                 <p class="comentario">Pantalla de como es en la interfaz gráfica.</p>
+                <img src="ImagenesInterfaz/img11.png" width="600">
+                <p class="comentario">Pantalla de como se imprime en modo de arbol binario.</p>
             </div>
         </div>
 
@@ -318,6 +596,7 @@
                 <img src="ImagenesInterfaz/img5.png" width="600">
                 <p class="comentario">Ejemplo de reportes generados desde la interfaz gráfica.</p>
                 <img src="ImagenesInterfaz/img9.png" width="600">
+                <img src="ImagenesInterfaz/img10.png" width="600">
             </div>
         </div>
 
