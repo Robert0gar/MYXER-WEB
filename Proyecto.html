@@ -252,39 +252,103 @@
         </li>
 
         <!-- Manual en Interfaz -->
-        <li>
-            <a onclick="toggleSubmenu(this)">Manual en Interfaz</a>
-            <div class="submenu">
-                <p>💻 Aquí irá el contenido del manual en interfaz...</p>
+<li>
+    <a onclick="toggleSubmenu(this)">Manual en Interfaz</a>
+    <div class="submenu">
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Pantalla de Inicio</h3>
+            <div class="apartado-content">
+                <p>Al abrir la interfaz gráfica, el sistema muestra la pantalla de inicio con las principales opciones disponibles.</p>
+                <img src="ImagenesInterfaz/img1.png" width="600">
+                <p class="comentario">Vista inicial del sistema con acceso rápido a emergencias, clientes, tareas y empleados.</p>
             </div>
-        </li>
-    </ul>
+        </div>
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Gestión de Emergencias</h3>
+            <div class="apartado-content">
+                <p>Desde la interfaz, puedes agregar, atender o listar emergencias mediante botones en pantalla.</p>
+                <img src="ImagenesInterfaz/img2.png" width="600">
+                <p class="comentario">Interfaz gráfica de emergencias con botones para gestionar la pila.</p>
+            </div>
+        </div>
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Gestión de Clientes</h3>
+            <div class="apartado-content">
+                <p>Permite registrar clientes nuevos, atender clientes en espera y ver la lista de espera en un panel visual.</p>
+                <img src="ImagenesInterfaz/img3.png" width="600">
+                <p class="comentario">Ejemplo de la cola de clientes representada en la interfaz gráfica.</p>
+                <img src="ImagenesInterfaz/img8.png" width="600">
+            </div>
+        </div>
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Gestión de Tareas</h3>
+            <div class="apartado-content">
+                <p>En esta sección se pueden agregar, eliminar y listar tareas en la interfaz gráfica.</p>
+                <img src="ImagenesInterfaz/img6.png" width="600">
+                <p class="comentario">Panel de tareas con opciones para manipular la lista enlazada.</p>
+            </div>
+        </div>
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Resumen General</h3>
+            <div class="apartado-content">
+                <p>En la opción "Resumen", se muestra la combinación de emergencias, clientes y tareas en una sola pantalla.</p>
+                <img src="ImagenesInterfaz/img7.png" width="600">
+                <p class="comentario">Pantalla resumen con todas las estructuras de datos visibles en paralelo.</p>
+            </div>
+        </div>
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Empleados</h3>
+            <div class="apartado-content">
+                <p>Desde esta opción se visualiza la jerarquía del restaurante: CEO, Caja, Cocina y Meseros.</p>
+                <img src="ImagenesInterfaz/img4.png" width="600">
+                <p class="comentario">Pantalla de como es en la interfaz gráfica.</p>
+            </div>
+        </div>
+
+        <div class="apartado">
+            <h3 onclick="toggleApartado(this)">Búsquedas y Reportes</h3>
+            <div class="apartado-content">
+                <p>Incluye opciones para consultar mesas y ordenar clientes alfabéticamente.</p>
+                <img src="ImagenesInterfaz/img5.png" width="600">
+                <p class="comentario">Ejemplo de reportes generados desde la interfaz gráfica.</p>
+                <img src="ImagenesInterfaz/img9.png" width="600">
+            </div>
+        </div>
+
+    </div>
+</li>
+ </ul>
 
     <script>
-        function toggleSubmenu(element) {
-            let allSubmenus = document.querySelectorAll('.submenu');
-            allSubmenus.forEach(sub => {
-                if (sub !== element.nextElementSibling) {
-                    sub.style.display = 'none';
-                }
-            });
+    function toggleSubmenu(element) {
+        const submenu = element.nextElementSibling;
+        const allSubmenus = document.querySelectorAll(".submenu");
 
-            let submenu = element.nextElementSibling;
-            submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
-        }
+        // Cierra todos
+        allSubmenus.forEach(s => {
+            if (s !== submenu) s.style.display = "none";
+        });
 
-        function toggleApartado(element) {
-            let content = element.nextElementSibling;
-            let allContents = document.querySelectorAll('.apartado-content');
-            allContents.forEach(c => {
-                if (c !== content) {
-                    c.style.display = 'none';
-                }
-            });
+        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+    }
 
-            content.style.display = (content.style.display === 'block') ? 'none' : 'block';
-        }
-    </script>
+    function toggleApartado(element) {
+        const content = element.nextElementSibling;
+        const allContents = document.querySelectorAll(".apartado-content");
+        allContents.forEach(c => {
+            if (c !== content) c.style.display = "none";
+        });
+
+        content.style.display = (content.style.display === "block") ? "none" : "block";
+    }
+</script>
+
 
 </body>
 </html>
