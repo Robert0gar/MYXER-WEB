@@ -113,7 +113,77 @@
         <li>
             <a onclick="toggleSubmenu(this)">Clases del Código</a>
             <div class="submenu">
-                <!-- Aquí va lo que ya tenías en Clases del Código -->
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">1. Pila (Stack) → Emergencias</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Almacena las emergencias con el método <b>LIFO</b> (Last In, First Out).<br>
+                           • Cuando ocurre una emergencia, se agrega con <code>push()</code>.<br>
+                           • Para atenderla, se usa <code>pop()</code>, sacando la más reciente.<br>
+                           • Para consultar sin quitarla, se usa <code>peek()</code>.
+                        </p>
+                        <p><b>Algoritmo:</b> La pila permite que la última emergencia registrada sea la primera en resolverse, lo cual tiene sentido en situaciones críticas.</p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">2. Cola con Prioridad (Priority Queue) → Clientes</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Se utiliza para gestionar a los clientes en espera.<br>
+                           • Los clientes se insertan con prioridad distinta:<br>
+                           – VIP y para llevar → prioridad más alta.<br>
+                           – Regulares en sala → prioridad menor.
+                        </p>
+                        <p><b>Algoritmo:</b> El programa define un sistema de prioridad: el cliente con mayor prioridad numérica es atendido primero. Esto simula una cola dinámica que respeta importancia antes que orden de llegada.</p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">3. Lista Enlazada (LinkedList) → Tareas</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Permite agregar tareas, eliminarlas por índice y buscarlas por texto.<br>
+                           • Es flexible para manejar listas que cambian constantemente.
+                        </p>
+                        <p><b>Algoritmo:</b></p>
+                        <p>• Se recorre la lista para buscar coincidencias (<code>buscarIndicePorTexto</code>).<br>
+                           • También se organiza agrupando las tareas por departamento (Cocina, Caja, Servicio) usando un <b>TreeMap</b> que ordena alfabéticamente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">4. Tabla Hash (Hashtable) → Contadores y Menú</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso en contadores:</b></p>
+                        <p>• Guarda cuántas tareas, emergencias y clientes se han creado.<br>
+                           • Ejemplo: <code>contador.put("TAREAS_CREADAS", 0);</code>
+                        </p>
+                        <p><b>Uso en menús de comida:</b></p>
+                        <p>• Se usan varias tablas hash para consultar rápidamente un platillo por su nombre.<br>
+                           • Esto evita recorrer listas grandes y mejora el acceso.
+                        </p>
+                        <p><b>Algoritmo:</b> Se aprovecha la búsqueda <b>O(1)</b> de una tabla hash para acceder rápido a un platillo específico.</p>
+                    </div>
+                </div>
+
+                <div class="apartado">
+                    <h3 onclick="toggleApartado(this)">5. Árbol Binario → Empleados</h3>
+                    <div class="apartado-content">
+                        <p><b>Uso:</b></p>
+                        <p>• Representa la jerarquía del restaurante.<br>
+                           • El nodo raíz es el CEO (MYXER).<br>
+                           • Tiene ramas para Caja, Cocina y Servicio (meseros).
+                        </p>
+                        <p><b>Algoritmo:</b></p>
+                        <p>• Se usa búsqueda en árbol para encontrar empleados.<br>
+                           • También se recorre el subárbol para listar empleados de un área.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </li>
 
@@ -125,9 +195,9 @@
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Menú Principal</h3>
                     <div class="apartado-content">
-                        <p>Primero se muestra el sistema de gestión y las opciones que puedes realizar.</p>
-                        <p>Si das enter podrás ver el menú principal donde aparecen emergencias, clientes, tareas, ver todo, empleados y salir.</p>
-                        <img src="imagenes/captura1.png" alt="Menú principal" width="600">
+                        <p>Primero se muestra el sistema de gestión y las opciones que puedes hacer.</p>
+                        <p>Si das enter podrás ver el menú principal: emergencias, clientes, tareas, ver todo, empleados y salir.</p>
+                        <img src="imagenes/captura1.png" width="600">
                     </div>
                 </div>
 
@@ -138,87 +208,77 @@
                         <img src="imagenes/captura2.png" width="600">
                         <p>Opción 2 → Atender la emergencia en el tope.</p>
                         <img src="imagenes/captura3.png" width="600">
-                        <p>Opción 4 → Ver la emergencia del tope.</p>
+                        <p>Opción 4 → Consultar la emergencia del tope.</p>
                         <img src="imagenes/captura4.png" width="600">
-                        <p>Opción 5 → Ver lista de emergencias.</p>
+                        <p>Opción 5 → Ver todas las emergencias.</p>
                         <img src="imagenes/captura5.png" width="600">
-                        <p>Opción 0 → Volver al menú principal.</p>
-                        <img src="imagenes/captura6.png" width="600">
                     </div>
                 </div>
 
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Menú de Clientes</h3>
                     <div class="apartado-content">
-                        <p>Opción 1 → Agregar nuevo cliente.</p>
-                        <img src="imagenes/captura1.png" width="600">
+                        <p>Opción 1 → Agregar cliente.</p>
                         <img src="imagenes/capturalol.png" width="600">
                         <p>Opción 2 → Atender cliente.</p>
                         <img src="imagenes/captura10.png" width="600">
-                        <p>Opción 3 → Ver lista de clientes.</p>
+                        <p>Opción 3 → Atender cliente en lista.</p>
                         <img src="imagenes/captura11.png" width="600">
-                        <p>Opción 4 → Mostrar clientes en espera.</p>
+                        <p>Opción 4 → Ver clientes en espera.</p>
                         <img src="imagenes/captura12.png" width="600">
-                        <p>Opción 0 → Volver al menú principal.</p>
                     </div>
                 </div>
 
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Menú de Tareas</h3>
                     <div class="apartado-content">
-                        <p>Opción 1 → Agregar nueva tarea.</p>
+                        <p>Opción 1 → Agregar tarea.</p>
                         <img src="imagenes/captura13.png" width="600">
                         <p>Opción 2 → Eliminar tarea.</p>
                         <img src="imagenes/captura15.png" width="600">
                         <p>Opción 3 → Buscar tarea por texto.</p>
                         <img src="imagenes/captura17.png" width="600">
-                        <p>Opción 4 → Ver todas las tareas.</p>
+                        <p>Opción 4 → Ver lista de tareas.</p>
                         <img src="imagenes/captura18.png" width="600">
-                        <p>Opción 0 → Volver al menú principal.</p>
                     </div>
                 </div>
 
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Ver Todo</h3>
                     <div class="apartado-content">
-                        <p>Opción 4 del menú principal → Muestra emergencias, clientes y tareas.</p>
+                        <p>Opción 4 del menú principal → Ver emergencias, clientes y tareas.</p>
                         <img src="imagenes/captura19.png" width="600">
-                        <p>Opción 0 → Volver al menú principal.</p>
                     </div>
                 </div>
 
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Empleados</h3>
                     <div class="apartado-content">
-                        <p>Opción 1 → Ver CEO.</p>
+                        <p>Opción 1 → CEO</p>
                         <img src="imagenes/captura20.png" width="600">
-                        <p>Opción 2 → Ver empleados de caja.</p>
+                        <p>Opción 2 → Caja</p>
                         <img src="imagenes/captura21.png" width="600">
-                        <p>Opción 3 → Ver empleados de cocina.</p>
+                        <p>Opción 3 → Cocina</p>
                         <img src="imagenes/captura22.png" width="600">
-                        <p>Opción 4 → Ver meseros.</p>
+                        <p>Opción 4 → Meseros</p>
                         <img src="imagenes/captura23.png" width="600">
-                        <p>Opción 0 → Volver al menú principal.</p>
                     </div>
                 </div>
 
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Búsquedas y Reportes</h3>
                     <div class="apartado-content">
-                        <p>Opción 6 del menú principal → Acceso a búsquedas y reportes.</p>
                         <p>Opción 1 → Estado detallado de las mesas.</p>
                         <img src="imagenes/captura26.png" width="600">
                         <p>Opción 2 → Ordenar clientes alfabéticamente.</p>
                         <img src="imagenes/captura27.png" width="600">
-                        <p>Opción 0 → Volver al menú principal.</p>
-                        <img src="imagenes/captura28.png" width="600">
                     </div>
                 </div>
 
                 <div class="apartado">
                     <h3 onclick="toggleApartado(this)">Salir</h3>
                     <div class="apartado-content">
-                        <p>Opción 6 → Salir del programa.</p>
+                        <p>Opción 6 del menú principal → salir del programa.</p>
                         <img src="imagenes/captura24.png" width="600">
                     </div>
                 </div>
